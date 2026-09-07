@@ -1,0 +1,23 @@
+/* Tùy chỉnh màu chủ đạo (Primary Red) cho cả Light và Dark mode */
+[data-md-color-scheme='default'],
+[data-md-color-scheme='slate'] {
+  --md-primary-fg-color: rgb(255, 0, 0);
+  --md-primary-fg-color--light: #ff3333;
+  --md-primary-fg-color--dark: #cc0000;
+}
+
+/* Thêm ký hiệu phía trước tiêu đề khi được chọn từ mục lục */
+:is(h1, h2, h3, h4, h5, h6):target::before {
+  content: '👉 ';
+  color: var(--md-primary-fg-color, #ff0000);
+  margin-right: 0.25rem;
+  animation: pulse-target 1s ease-in-out infinite alternate;
+}
+
+/* Tùy chọn: Thêm hiệu ứng gạch màu đỏ bên trái tiêu đề */
+:is(h1, h2, h3, h4, h5, h6):target {
+  scroll-margin-top: 4rem; /* Giúp tiêu đề không bị che bởi thanh header */
+  border-left: 4px solid var(--md-primary-fg-color, #ff0000);
+  padding-left: 0.5rem;
+  transition: all 0.3s ease;
+}
