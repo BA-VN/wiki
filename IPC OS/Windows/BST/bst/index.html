@@ -1,0 +1,2269 @@
+<!DOCTYPE html><html lang="vi" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://ba-vn.github.io/wiki/IPC%20OS/Windows/BST/bst/">
+      
+      
+        <link rel="prev" href="../../remote-desktop/">
+      
+      
+        <link rel="next" href="../../eventviewer/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Beckhoff Service Tool - BA-VN Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#beckhoff-service-tool" class="md-skip">
+          Bỏ qua
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Đầu trang">
+    <a href="https://ba-vn.github.io/wiki/" title="BA-VN Wiki" class="md-header__button md-logo" aria-label="BA-VN Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BA-VN Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Beckhoff Service Tool
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Tìm kiếm">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  IPC OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../TwinCAT/Tc3/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  TwinCAT
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../EtherCAT/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  EtherCAT
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../Motion/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Motion
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../Example/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Ví dụ - Demo
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../sample-markdown/sample_markdown/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Ví dụ - Mark down
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://ba-vn.github.io/wiki/" title="BA-VN Wiki" class="md-nav__button md-logo" aria-label="BA-VN Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    BA-VN Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    About
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../About/terms-of-use/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Điều khoản sử dụng
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IPC OS
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    IPC OS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked="">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Windows
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1. Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../remote-desktop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remote Desktop
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Beckhoff Service Tool
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Beckhoff Service Tool
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#BST-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lựa chọn phiên bản BST
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lựa chọn phiên bản BST">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#BST-ChangeVersion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thay đổi phiên bản BST
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#su-dung-bst" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sử dụng BST
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sử dụng BST">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yeu-cau-truoc-khi-su-dung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yêu cầu trước khi sử dụng
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#khoi-ong-bst" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Khởi động BST
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sao-luu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sao lưu
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#BST-Remote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Truy cập Beckhoff Service Tool từ xa
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Truy cập Beckhoff Service Tool từ xa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#buoc-1-kich-hoat-vnc-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bước 1: Kích hoạt VNC Server
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bước 1: Kích hoạt VNC Server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cach-1-kich-hoat-thong-qua-tep-cau-hinh-truoc-khi-khoi-ong-bst" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cách 1: Kích hoạt thông qua tệp cấu hình (trước khi khởi động BST)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cach-2-kich-hoat-sau-khi-a-khoi-ong-bst" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cách 2: Kích hoạt sau khi đã khởi động BST
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buoc-2-truy-cap-tu-xa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bước 2: Truy cập từ xa
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eventviewer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Event viewer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ipc_prepare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cấu hình IPC ban đầu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../WinCE/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. WinCE
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2. WinCE
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../TcBSD/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. TwinCAT/BSD
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3. TwinCAT/BSD
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../TcLinux/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. TwinCAT RT Linux
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    4. TwinCAT RT Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TwinCAT
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TwinCAT
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../TwinCAT/Tc3/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. TwinCAT 3
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1. TwinCAT 3
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../TwinCAT/Tc3/4026/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1. Cài đặt TwinCAT 4026
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1.1. Cài đặt TwinCAT 4026
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_3">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../TwinCAT/Tc3/4024/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.2. Cài đặt TwinCAT 4024
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1.2. Cài đặt TwinCAT 4024
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../TwinCAT/Tc2/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. TwinCAT 2
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2. TwinCAT 2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../EtherCAT/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EtherCAT
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    EtherCAT
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Motion/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Motion
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Motion
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Example/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ví dụ - Demo
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ví dụ - Demo
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../sample-markdown/sample_markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ví dụ - Mark down
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#BST-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lựa chọn phiên bản BST
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lựa chọn phiên bản BST">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#BST-ChangeVersion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thay đổi phiên bản BST
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#su-dung-bst" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sử dụng BST
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sử dụng BST">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yeu-cau-truoc-khi-su-dung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yêu cầu trước khi sử dụng
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#khoi-ong-bst" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Khởi động BST
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sao-luu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sao lưu
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#BST-Remote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Truy cập Beckhoff Service Tool từ xa
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Truy cập Beckhoff Service Tool từ xa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#buoc-1-kich-hoat-vnc-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bước 1: Kích hoạt VNC Server
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bước 1: Kích hoạt VNC Server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cach-1-kich-hoat-thong-qua-tep-cau-hinh-truoc-khi-khoi-ong-bst" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cách 1: Kích hoạt thông qua tệp cấu hình (trước khi khởi động BST)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cach-2-kich-hoat-sau-khi-a-khoi-ong-bst" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cách 2: Kích hoạt sau khi đã khởi động BST
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buoc-2-truy-cap-tu-xa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bước 2: Truy cập từ xa
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+  <nav class="md-path" aria-label="Thanh điều hướng">
+    <ol class="md-path__list">
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    IPC OS
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    1. Windows
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="beckhoff-service-tool">Beckhoff Service Tool<a class="headerlink" href="#beckhoff-service-tool" title="Permanent link">¶</a></h1>
+<p><strong>Beckhoff Service Tool (BST)</strong> là một chương trình sao lưu và phục hồi dữ liệu đồ họa dễ sử dụng dành cho hệ điều hành <strong>Windows</strong>.<br>
+Nó có thể được sử dụng để tạo bản sao lưu hoàn chỉnh dữ liệu hệ thống và các cấu hình liên quan.<br>
+Nếu có bất kỳ sự cố nào xảy ra với hệ thống, dữ liệu có thể được khôi phục nhanh chóng và dễ dàng từ các bản sao lưu. Nhờ đó, thời gian ngừng hoạt động và chi phí phục hồi tốn kém có thể được giảm thiểu đáng kể.</p>
+<div class="admonition warning">
+<p class="admonition-title">Cảnh báo</p>
+<p>Beckhoff Service Tool (BST) hiện tại chỉ được sử dụng với hệ điều hành Windows 7/10/11</p>
+</div>
+<hr>
+<h2 id="BST-version">Lựa chọn phiên bản BST<a class="headerlink" href="#BST-version" title="Permanent link">¶</a></h2>
+<p>Trước khi sử dụng BST, bạn nên kiểm tra và điều chỉnh phiên bản của nó.<br>
+Để kiểm tra phiên bản, bạn cần cắm BST vào laptop. Sau khi kết nối, BST sẽ xuất hiện dưới dạng một ổ đĩa mới có tên là <strong>Image</strong>:<br>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../asset/explorer_n9YdV9ZF4B.png" data-desc-position="bottom"><img alt="alt text" src="../asset/explorer_n9YdV9ZF4B.png"></a></p>
+<p>Tiếp theo, chúng ta tìm tệp có thông tin phiên bản:<br>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../asset/Notepad_UkpnLF6XCa.png" data-desc-position="bottom"><img alt="alt text" src="../asset/Notepad_UkpnLF6XCa.png"></a></p>
+<p>Phiên bản BST cần được điều chỉnh phù hợp với loại IPC mà chúng ta sẽ sử dụng BST:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">BST 2.1.9.xx</th>
+<th style="text-align: left;">BST 2.0.9.xx</th>
+<th style="text-align: left;">BST 2.0.8.xx</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>IPC Motherboard hỗ trợ</strong></td>
+<td style="text-align: left;">CBxx55, CBxx56, CB1061, CB3060, CBxx63, CBxx64, CBxx67, CBxx68, CBxx71, CBxx72, CBxx73, CBxx76, CBxx83</td>
+<td style="text-align: left;">CBxx51, CBxx52, CB3053, CB3054</td>
+<td style="text-align: left;">CBxx50</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Embedded PC (EPC) hỗ trợ</strong></td>
+<td style="text-align: left;">CX51xx, CX52xx, CX53xx, CX56xx, CX20x0, CX20x2, CX20x3</td>
+<td style="text-align: left;">CX50xx</td>
+<td style="text-align: left;">CX1020, CX1030</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Server công nghiệp hỗ trợ</strong></td>
+<td style="text-align: left;">C6670</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="BST-ChangeVersion">Thay đổi phiên bản BST<a class="headerlink" href="#BST-ChangeVersion" title="Permanent link">¶</a></h3>
+<p>Nếu cần they đổi phiên bản BST, bạn có thể thực hiện bằng công cụ <strong>ApplyBST</strong>. Công cụ này được tải xuống cùng với phiên bản tương ứng của BST, tải xuống <a href="https://www.beckhoff.com/en-en/support/download-finder/search-result/?download_group=412944827&amp;download_item=411886294">tại đây</a> hoặc từ website sản phẩm <a href="https://www.beckhoff.com/en-en/
+products/ipc/panel-pcs/accessories/bst.html?">Beckhoff Service Tool</a>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../asset/msedge_JmqHTo4xG0.png" data-desc-position="bottom"><img alt="alt text" src="../asset/msedge_JmqHTo4xG0.png"></a></p>
+<p>Sau khi giải nén tệp đã tải về, chạy ứng dụng <strong>ApplyBST.exe</strong> (yêu cầu BST đã được cắm vào laptop):<br>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../asset/explorer_XhM19V6i3c.png" data-desc-position="bottom"><img alt="alt text" src="../asset/explorer_XhM19V6i3c.png"></a></p>
+<p>Khi mở ứng dụng, bạn sẽ thấy cửa sổ sau:
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../asset/ApplyBST_WRRaY0VJx7.png" data-desc-position="bottom"><img alt="alt text" src="../asset/ApplyBST_WRRaY0VJx7.png"></a><br>
+Lúc này, đường dẫn đến tệp BST đã được tự động chọn cùng với thư mục (bạn có thể chọn đường dẫn đến tệp BST phiên bản khác), và ổ USB BST (trong trường hợp này là Disk <strong>D</strong>). Sau đó nhấn <mark><strong>Deploy</strong></mark>.<br></p>
+<p>Bạn có thể thấy một cửa sổ:<br>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../asset/ApplyBST_4VCynGOPMS.png" data-desc-position="bottom"><img alt="alt text" src="../asset/ApplyBST_4VCynGOPMS.png"></a><br>
+Trong trường hợp này, bạn cần <strong>xóa</strong> tất cả file có trong thư mục <strong>Images</strong> nằm trên BST (thư mục này chứa các bản sao lưu bạn đã thực hiện trước đó). Vì vậy chúng tôi khuyên bạn nên chuyển các file này sang vị trí khác ngoài BST.<br></p>
+<p>Một cửa sổ khác xuất hiện:<br>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../asset/ApplyBST_DAXf6iAOST.png" data-desc-position="bottom"><img alt="alt text" src="../asset/ApplyBST_DAXf6iAOST.png"></a><br>
+Đây là thông tin để xóa tất cả các tệp khỏi ổ đĩa sau khi quá trình hoàn tất, bạn cần xác nhận để tiếp tục.
+Nếu đã có phiên bản BST trước đó, bạn có thể được yêu cầu lưu hoặc ghi đè các <strong>Setting</strong>.<br>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../asset/image.png" data-desc-position="bottom"><img alt="alt text" src="../asset/image.png"></a></p>
+<p>Sau khi thanh <strong><em>Deployment Progress</em></strong> là 100%, bạn có thể đóng cửa sổ <strong>ApplyBST</strong>.<br>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../asset/ApplyBST_ff0wdMFTs1.png" data-desc-position="bottom"><img alt="alt text" src="../asset/ApplyBST_ff0wdMFTs1.png"></a></p>
+<hr>
+<h2 id="su-dung-bst">Sử dụng BST<a class="headerlink" href="#su-dung-bst" title="Permanent link">¶</a></h2>
+<h3 id="yeu-cau-truoc-khi-su-dung">Yêu cầu trước khi sử dụng<a class="headerlink" href="#yeu-cau-truoc-khi-su-dung" title="Permanent link">¶</a></h3>
+<p><ins>Yêu cầu:</ins></p>
+<ol>
+<li>USB BST phải được <strong>kết nối trực tiếp</strong> với IPC mà không thông qua hub USB hay cáp USB kéo dài nào.</li>
+<li>USB BST phải là thiết bị khởi động đầu tiên trong BIOS</li>
+<li>Phiên bản của BST phải phù hợp với IPC đang sử dụng. Xem chi tiết tại <a href="#BST-version">Lựa chọn phiên bản BST</a>.</li>
+</ol>
+<p>IPC phải khởi động từ USB BST để bắt đầu sử dụng BST. Hãy kiểm tra thứ tự khởi động trong BIOS
+Nếu BST không khởi động, điều này có nghĩa là thứ tự khởi động đã bị thay đổi hoặc bạn không dùng đúng phiên bản BST cho IPC đang sử dụng.</p>
+<h3 id="khoi-ong-bst">Khởi động BST<a class="headerlink" href="#khoi-ong-bst" title="Permanent link">¶</a></h3>
+<p>Để khởi động BST, bạn cần khởi động IPC với BST (điều này yêu cầu tạm thời gián đoạn hoạt động bình thường của máy và IPC). Điều này có thể được thực hiện bằng hai cách:</p>
+<ul>
+<li>Cắm BST vào IPC khi nó đang hoạt động, sau đó khởi động lại hệ thống.</li>
+<li>Tắt hệ thống một cách an toàn và ngắt nguồn điện của IPC ⇒ cắm BST ⇒ cấp nguồn.</li>
+</ul>
+<p>Giao diện của BST sẽ xuất hiện khi khởi động đúng:
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../asset/tvnviewer_wbZMfxJZYd.png" data-desc-position="bottom"><img alt="alt text" src="../asset/tvnviewer_wbZMfxJZYd.png"></a><br></p>
+<div class="admonition info">
+<p class="admonition-title">Thao tác với BST</p>
+<p>Để thao tác với BST, bạn cần có màn hình và chuột kết nối với IPC, hoặc bạn có thể sử dụng truy cập từ xa bằng ứng dụng TightVNC Viewer (xem thêm <a href="#BST-Remote">tại đây</a>)</p>
+</div>
+<h3 id="sao-luu">Sao lưu<a class="headerlink" href="#sao-luu" title="Permanent link">¶</a></h3>
+<p>Bạn có thể lưu file sao lưu (gọi là Image - file ảnh) trên USB BST hoặc trên ổ đĩa ngoài.</p>
+<div class="admonition warning">
+<p class="admonition-title">Yêu cầu khi sao lưu</p>
+<p>USB BST hoặc ổ đĩa lưu trữ file sao lưu phải còn đủ dung lượng</p>
+</div>
+<hr>
+<h2 id="BST-Remote">Truy cập Beckhoff Service Tool từ xa<a class="headerlink" href="#BST-Remote" title="Permanent link">¶</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Trường hợp sử dụng</p>
+<p>Cách này có thể được sử dụng khi IPC không thể kết nối tới màn hình và bàn phím rời.</p>
+<p>Chỉ cần cài đặt một lần duy nhất, BST sẽ lưu cấu hình cài đặt VNC</p>
+</div>
+<h3 id="buoc-1-kich-hoat-vnc-server">Bước 1: Kích hoạt VNC Server<a class="headerlink" href="#buoc-1-kich-hoat-vnc-server" title="Permanent link">¶</a></h3>
+<h4 id="cach-1-kich-hoat-thong-qua-tep-cau-hinh-truoc-khi-khoi-ong-bst"><em>Cách 1: Kích hoạt thông qua tệp cấu hình (trước khi khởi động BST)</em><a class="headerlink" href="#cach-1-kich-hoat-thong-qua-tep-cau-hinh-truoc-khi-khoi-ong-bst" title="Permanent link">¶</a></h4>
+<ol>
+<li>
+<p>Kết nối USB <strong>BST</strong> vào máy tính.</p>
+</li>
+<li>
+<p>Mở và chỉnh sửa file <strong>"Beckhoff Service Tool\Settings.xml"</strong>:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../asset/explorer_CkihoqHTv5.png" data-desc-position="bottom"><img alt="alt text" src="../asset/explorer_CkihoqHTv5.png"></a></p>
+<p>Thêm hoặc cập nhật đoạn mã sau vào file cấu hình:</p>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">&lt;RemoteControl&gt;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nt">&lt;Enabled&gt;</span>1<span class="nt">&lt;/Enabled&gt;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">&lt;Password&gt;</span>ju6mRyIslrAMkBdayCE+N5OdS5ymt0vo<span class="nt">&lt;/Password&gt;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">&lt;Application</span><span class="w"> </span><span class="na">Path=</span><span class="s">""</span><span class="w"> </span><span class="na">Arguments=</span><span class="s">""</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nt">&lt;/RemoteControl&gt;</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>Sau khi lưu các thay đổi trên, bạn đã có thể truy cập điều khiển từ xa vào BST qua giao thức VNC với thông tin sau:</p>
+<ul>
+<li>Mật khẩu: <strong><code>1</code></strong></li>
+<li>Tên VNC Server = <strong><code>BST-&lt;BTN&gt;</code></strong></li>
+</ul>
+<blockquote>
+<p><em>Lưu ý: Bạn hoàn toàn có thể đổi lại mật khẩu này sau khi BST đã khởi động thành công vào giao diện chính.</em></p>
+</blockquote>
+</li>
+</ol>
+<h4 id="cach-2-kich-hoat-sau-khi-a-khoi-ong-bst"><em>Cách 2: Kích hoạt sau khi đã khởi động BST</em><a class="headerlink" href="#cach-2-kich-hoat-sau-khi-a-khoi-ong-bst" title="Permanent link">¶</a></h4>
+<p>Phương pháp này yêu cầu kết nối (<strong>ít nhất một lần</strong>), màn hình với IPC mà chúng ta đang khởi động BST.
+Sau khi khởi động BST, chọn tùy chọn <mark><strong>Settings</strong></mark> trên màn hình bắt đầu:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../asset/tvnviewer_WCiLK4bgCk.png" data-desc-position="bottom"><img alt="alt text" src="../asset/tvnviewer_WCiLK4bgCk.png"></a></p>
+<p>Sau đó chúng ta vào phần cài đặt <strong>General</strong> và thay đổi thiết lập <strong>TighVNC</strong> thành <em>Enable</em>, hãy cài đặt mật khẩu bằng tại đây. Nhấn <mark><strong>Ok</strong></mark> để hoàn tất cài đặt:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../asset/tvnviewer_NAJ3wnQKpE.png" data-desc-position="bottom"><img alt="alt text" src="../asset/tvnviewer_NAJ3wnQKpE.png"></a></p>
+<h3 id="buoc-2-truy-cap-tu-xa">Bước 2: Truy cập từ xa<a class="headerlink" href="#buoc-2-truy-cap-tu-xa" title="Permanent link">¶</a></h3>
+<p>Nếu BST đã được kết nối với IPC và khởi động đúng cách (chờ khoảng 5 phút), nhưng bạn không có màn hình, bạn có thể kết nối từ xa với BST bằng ứng dụng TightVNC Viewer.</p>
+<p>Để làm điều này, chúng ta cần phần mềm: <a href="https://www.tightvnc.com/download.php">TightVNC Viewer</a>.<br></p>
+<p>Sau khi cài đặt và chạy ứng dụng, một cửa sổ sẽ xuất hiện:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../asset/tvnviewer_uQKvOn8P1d.png" data-desc-position="bottom"><img alt="alt text" src="../asset/tvnviewer_uQKvOn8P1d.png"></a></p>
+<p>Thay thế <strong>Remote Host</strong> bằng tên VNC Server hoặc địa chỉ IP của VNC Server:</p>
+<ol>
+<li>
+<p>Tìm tên VNC Server
+    Tên VNC Server sẽ là: <strong><code>BST-&lt;BTN&gt;</code></strong>
+    Dựa theo nameplate của IPC, chúng ta có thể xác định được giá trị <code>BTN</code>.</p>
+<p>Ví dụ, ta có nameplate sau:
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../asset/BST_IPCNameplate.jpg" data-desc-position="bottom"><img alt="alt text" src="../asset/BST_IPCNameplate.jpg"></a><br></p>
+<p>⇒ Giá trị <code>BTN</code> là <mark><strong>000SWK4J</strong></mark><br>
+⇒ Tên VNC Server là <mark><strong>BST-000SWK4J</strong></mark><br>
+<br></p>
+</li>
+<li>
+<p>Tim địa chỉ IP của VNC Server:</p>
+<ol>
+<li>
+<p>Tìm IP từ tên VNC Server:
+    </p><div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ping BST-&lt;BTN&gt; -4
+</span></code></pre></div>
+    Ví dụ:
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../asset/cmd_lEcyVUuK72.png" data-desc-position="bottom"><img alt="alt text" src="../asset/cmd_lEcyVUuK72.png"></a><p></p>
+</li>
+<li>
+<p>Tìm IP bằng các phần mềm dò IP như là <strong>Wireshark</strong>, <strong>Advanced IP Scanner</strong>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../asset/Wireshark_EZxMEAeokL.png" data-desc-position="bottom"><img alt="alt text" src="../asset/Wireshark_EZxMEAeokL.png"></a></p>
+</li>
+</ol>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Chân trang">
+        
+          
+          <a href="../../remote-desktop/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Remote Desktop">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Trước
+              </span>
+              <div class="md-ellipsis">
+                Remote Desktop
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../eventviewer/" class="md-footer__link md-footer__link--next" aria-label="Sau: Event viewer">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Sau
+              </span>
+              <div class="md-ellipsis">
+                Event viewer
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs.sticky", "navigation.tabs", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.path", "navigation.indexes", "navigation.footer", "content.code.copy", "content.footnote.tooltips", "content.action.view"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
