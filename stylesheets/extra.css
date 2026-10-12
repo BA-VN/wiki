@@ -1,0 +1,134 @@
+/* Tùy chỉnh màu chủ đạo (Primary Red) cho cả Light và Dark mode */
+[data-md-color-scheme='default'],
+[data-md-color-scheme='slate'] {
+  --md-primary-fg-color: rgb(255, 0, 0);
+  --md-primary-fg-color--light: #ff3333;
+  --md-primary-fg-color--dark: #cc0000;
+}
+
+[data-md-color-scheme='slate'] {
+  /* Màu chữ văn bản thông thường */
+  --md-typeset-color: #ffffff;
+
+  /* Màu tiêu đề h1, h2, h3... */
+  --md-default-fg-color: #ffffff;
+
+  /* Màu chữ phụ, mô tả phụ (tùy chọn) */
+  --md-default-fg-color--light: #e0e0e0;
+}
+
+/* Thêm ký hiệu phía trước tiêu đề khi được chọn từ mục lục */
+:is(h1, h2, h3, h4, h5, h6):target::before {
+  content: '👉 ';
+  color: var(--md-primary-fg-color, #ff0000);
+  margin-right: 0.25rem;
+  animation: pulse-target 1s ease-in-out infinite alternate;
+}
+
+/* Tùy chọn: Thêm hiệu ứng gạch màu đỏ bên trái tiêu đề */
+:is(h1, h2, h3, h4, h5, h6):target {
+  scroll-margin-top: 4rem; /* Giúp tiêu đề không bị che bởi thanh header */
+  border-left: 4px solid var(--md-primary-fg-color, #ff0000);
+  padding-left: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+/* Luôn hiển thị nút copy mọi lúc */
+.md-clipboard,
+.highlight .md-clipboard,
+.highlight:hover .md-clipboard {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Ép màu trắng cho icon */
+.md-clipboard::after,
+.highlight .md-clipboard::after {
+  background-color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* Thiết lập bộ đếm phân cấp đa tầng (1, 1.1, 1.2...) */
+.md-typeset ol {
+  list-style-type: none !important;
+  counter-reset: item;
+  padding-left: 1.5rem;
+}
+
+.md-typeset ol > li {
+  display: block;
+  position: relative;
+}
+
+.md-typeset ol > li::before {
+  content: counters(item, '.') '. ';
+  counter-increment: item;
+  font-weight: bold;
+  position: absolute;
+  left: -2rem;
+}
+
+/* ==========================================================================
+   TÙY CHỈNH THANH ĐIỀU HƯỚNG TABS (MkDocs Material)
+   ========================================================================== */
+
+/* 1. Thiết lập chung cho tất cả các tab */
+.md-tabs__link {
+  font-weight: 700;
+  opacity: 0.9;
+  color: #ffffff;
+
+  /* Cân bằng layout tránh lệch hàng */
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
+  padding: 4px 14px;
+  border-radius: 4px;
+
+  /* Hiệu ứng chuyển màu chữ mượt mà */
+  transition:
+    color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.25s ease;
+}
+
+/* 2. Hiệu ứng khi rê chuột (hover): Chữ đổi sang màu đen, giữ nguyên nền */
+.md-tabs__item:not(.md-tabs__item--active) .md-tabs__link:hover {
+  background-color: transparent !important;
+  color: #111111 !important; /* Đen đậm, sắc nét */
+  font-weight: 800; /* Đậm thêm một bậc để chữ đen nét rõ hơn */
+  opacity: 1;
+}
+
+/* 3. Tab đang được chọn (Active): Nền trắng - Chữ đỏ */
+.md-tabs__item--active .md-tabs__link {
+  background-color: #ffffff;
+  color: #e50012 !important;
+  font-weight: 800;
+  opacity: 1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================================================
+   VIỀN CHIA CÁC Ô TRONG BẢNG (GRID LINES CHO TABLE)
+   ========================================================================== */
+
+/* 1. Tạo viền bao ngoài và viền giữa các ô */
+.md-typeset table:not([class]) {
+  border: 1px solid var(--md-default-fg-color--lightest, #d0d7de);
+  border-collapse: collapse;
+}
+
+/* 2. Tạo viền chia dọc và ngang cho từng ô */
+.md-typeset table:not([class]) th,
+.md-typeset table:not([class]) td {
+  border: 1px solid var(--md-default-fg-color--lightest, #d0d7de) !important;
+  padding: 8px 12px;
+}
+
+/* 3. Phân biệt phần tiêu đề (Header) với viền đậm hơn một chút */
+.md-typeset table:not([class]) th {
+  border-bottom: 2px solid var(--md-default-fg-color--lighter, #afb8c1) !important;
+  background-color: var(--md-default-bg-color--lighter, rgba(0, 0, 0, 0.03));
+}
