@@ -1,0 +1,4871 @@
+<!DOCTYPE html><html lang="vi" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Kho kiến thức kỹ thuật của bộ phận kỹ thuật Beckhoff Automation Việt Nam">
+      
+      
+        <meta name="author" content="Beckhoff Automation Vietnam">
+      
+      
+        <link rel="canonical" href="https://ba-vn.github.io/wiki/sample-markdown/sample_markdown/">
+      
+      
+        <link rel="prev" href="../../About/roadmap/">
+      
+      
+        <link rel="next" href="../../IPC%20OS/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/logo_BAVN.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Ví dụ - Mark down - BA-VN Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&amp;family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&amp;display=swap">
+  <style>
+    :root {
+      --md-text-font: "Noto Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+      --md-code-font: "JetBrains Mono", "Cascadia Code", Consolas, monospace;
+    }
+  </style>
+
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  <script id="__analytics">
+  function __md_analytics() {
+    document.addEventListener("DOMContentLoaded", function () {
+      document$.subscribe(function () {
+        var form = document.forms.feedback;
+        if (!form) return;
+        for (var button of form.querySelectorAll("[type=submit]")) {
+          button.addEventListener("click", function (ev) {
+            ev.preventDefault();
+            var data = this.getAttribute("data-md-value");
+            form.firstElementChild.disabled = true;
+            var note = form.querySelector(
+              ".md-feedback__note [data-md-value='" + data + "']"
+            );
+            if (note) note.hidden = false;
+          });
+        }
+        form.hidden = false;
+      });
+    });
+  }
+</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#markdown-comprehensive-cheat-sheet-demo" class="md-skip">
+          Bỏ qua
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Đầu trang">
+    <a href="https://ba-vn.github.io/wiki/" title="BA-VN Wiki" class="md-header__button md-logo" aria-label="BA-VN Wiki" data-md-component="logo">
+      
+  <img src="../../assets/images/logo_BAVN.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BA-VN Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ví dụ - Mark down
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Link nhanh tới Beckhoff & Infosys -->
+    <div class="custom-header-links">
+      <a href="https://www.beckhoff.com" target="_blank" rel="noopener noreferrer" class="custom-header-btn">
+        Beckhoff
+      </a>
+      <a href="https://infosys.beckhoff.com" target="_blank" rel="noopener noreferrer" class="custom-header-btn">
+        Infosys
+      </a>
+    </div>
+
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="red" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Tìm kiếm">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Chia sẻ" aria-label="Chia sẻ" data-clipboard="" data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+
+    <!-- Nút (?) Mở popup Liên hệ & Mã QR Zalo Beckhoff Việt Nam -->
+    <button type="button" class="md-header__button md-icon bavn-contact-trigger" data-bavn-contact-open="" title="Liên hệ &amp; Hỗ trợ kỹ thuật Beckhoff Việt Nam (Zalo QR)" aria-label="Liên hệ &amp; Hỗ trợ kỹ thuật Beckhoff Việt Nam" aria-haspopup="dialog" aria-controls="bavn-contact-modal">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 18h2v-2h-2zm1-16A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-14a4 4 0 0 0-4 4h2a2 2 0 0 1 2-2 2 2 0 0 1 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5a4 4 0 0 0-4-4"></path></svg>
+    </button>
+
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../IPC%20OS/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  IPC OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../TwinCAT/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  TwinCAT
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../EtherCAT/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  EtherCAT
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Motion/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Motion
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../HMI/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  TwinCAT HMI
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Connectivity/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Truyền thông
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../TwinSAFE/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  TwinSAFE
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Example/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Ví dụ - Demo
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+
+<!-- Popup Modal: Mã QR Zalo & Thông tin liên hệ Beckhoff Automation Việt Nam -->
+<div id="bavn-contact-modal" class="bavn-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="bavn-contact-modal-title" hidden="">
+  <div class="bavn-modal-card">
+    <div class="bavn-modal-header">
+      <div>
+        <h3 id="bavn-contact-modal-title" class="bavn-modal-title">
+          Liên hệ &amp; Hỗ trợ Kỹ thuật — Beckhoff Việt Nam
+        </h3>
+        <p class="bavn-modal-subtitle">
+          Quét mã QR Zalo hoặc liên hệ trực tiếp với bộ phận kỹ thuật BA-VN
+        </p>
+      </div>
+      <button type="button" class="bavn-modal-close" data-bavn-contact-close="" title="Đóng (Esc)" aria-label="Đóng cửa sổ liên hệ">
+        ×
+      </button>
+    </div>
+
+    <div class="bavn-modal-body">
+      <div class="bavn-qr-box">
+        <a href="https://zalo.me/3774506956188675139" target="_blank" rel="noopener noreferrer" title="Mở Zalo Beckhoff Automation Việt Nam">
+          <img src="../../assets/images/BAVN_Zalo_QR.png" alt="Mã QR Zalo Beckhoff Automation Việt Nam" class="bavn-qr-img off-glb">
+        </a>
+        <div class="bavn-qr-caption">
+          <strong>Zalo: <a href="https://zalo.me/3774506956188675139" target="_blank" rel="noopener noreferrer">Beckhoff Automation Việt Nam</a></strong>
+          <span>Quét mã QR hoặc nhấn vào link để kết nối Zalo</span>
+        </div>
+      </div>
+
+      <div class="bavn-contact-info">
+        <div class="bavn-contact-item">
+          <span class="bavn-contact-label">Số điện thoại liên hệ</span>
+          <a href="tel:+842873002439" class="bavn-contact-value">+84 28 7300-2439</a>
+        </div>
+        <div class="bavn-contact-item">
+          <span class="bavn-contact-label">Email hỗ trợ kỹ thuật</span>
+          <a href="mailto:support@beckhoff.com.vn" class="bavn-contact-value">support@beckhoff.com.vn</a>
+        </div>
+        <div class="bavn-contact-item">
+          <span class="bavn-contact-label">Email thông tin chung</span>
+          <a href="mailto:info@beckhoff.com.vn" class="bavn-contact-value">info@beckhoff.com.vn</a>
+        </div>
+        <div class="bavn-contact-item">
+          <span class="bavn-contact-label">Website chính thức</span>
+          <a href="https://www.beckhoff.com/vi-vn/" target="_blank" rel="noopener noreferrer" class="bavn-contact-value">www.beckhoff.com/vi-vn</a>
+        </div>
+        <div class="bavn-contact-item">
+          <span class="bavn-contact-label">Tài liệu hãng (Infosys)</span>
+          <a href="https://infosys.beckhoff.com/" target="_blank" rel="noopener noreferrer" class="bavn-contact-value">infosys.beckhoff.com</a>
+        </div>
+        <div class="bavn-contact-item">
+          <span class="bavn-contact-label">Góp ý &amp; Báo lỗi Wiki</span>
+          <a href="https://github.com/BA-VN/wiki/issues" target="_blank" rel="noopener noreferrer" class="bavn-contact-value">github.com/BA-VN/wiki/issues</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  if (!window.__bavnContactModalBound) {
+    window.__bavnContactModalBound = true;
+
+    function toggleBavnContactModal(show) {
+      var modal = document.getElementById("bavn-contact-modal");
+      if (!modal) return;
+      if (show) {
+        modal.removeAttribute("hidden");
+        document.body.classList.add("bavn-modal-open");
+      } else {
+        modal.setAttribute("hidden", "");
+        document.body.classList.remove("bavn-modal-open");
+      }
+    }
+
+    document.addEventListener("click", function (ev) {
+      var openBtn = ev.target.closest("[data-bavn-contact-open]");
+      if (openBtn) {
+        ev.preventDefault();
+        toggleBavnContactModal(true);
+        return;
+      }
+      var closeBtn = ev.target.closest("[data-bavn-contact-close]");
+      if (closeBtn) {
+        ev.preventDefault();
+        toggleBavnContactModal(false);
+        return;
+      }
+      var modal = document.getElementById("bavn-contact-modal");
+      if (modal && !modal.hasAttribute("hidden") && ev.target === modal) {
+        toggleBavnContactModal(false);
+      }
+    });
+
+    document.addEventListener("keydown", function (ev) {
+      if (ev.key === "Escape") {
+        toggleBavnContactModal(false);
+      }
+    });
+  }
+</script>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://ba-vn.github.io/wiki/" title="BA-VN Wiki" class="md-nav__button md-logo" aria-label="BA-VN Wiki" data-md-component="logo">
+      
+  <img src="../../assets/images/logo_BAVN.png" alt="logo">
+
+    </a>
+    BA-VN Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked="">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    About
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../About/terms-of-use/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Điều khoản sử dụng
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thẻ (Tags)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Đóng góp tài liệu
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Đóng góp tài liệu
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../About/contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hướng dẫn &amp; Mẫu bài viết
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../About/roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lộ trình tài liệu (Roadmap)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ví dụ - Mark down
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ví dụ - Mark down
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#1-tieu-e-headings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Tiêu đề (Headings)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../IPC%20OS/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IPC OS
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    IPC OS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../IPC%20OS/Windows/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Windows
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1. Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IPC%20OS/Windows/ipc_prepare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cấu hình IPC ban đầu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IPC%20OS/Windows/device-manager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Beckhoff Device Manager
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IPC%20OS/Windows/uwf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unified Write Filter (UWF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IPC%20OS/Windows/remote-desktop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remote Desktop
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IPC%20OS/Windows/BST/bst/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Beckhoff Service Tool
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IPC%20OS/Windows/eventviewer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Event Viewer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../IPC%20OS/WinCE/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. WinCE
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2. WinCE
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IPC%20OS/WinCE/cerhost/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Truy cập từ xa với CERHOST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IPC%20OS/WinCE/config-and-regsave/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quản trị &amp; Lưu cấu hình (RegSave)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IPC%20OS/WinCE/backup-restore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sao lưu &amp; Khôi phục thẻ nhớ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../IPC%20OS/TcBSD/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. TwinCAT/BSD
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3. TwinCAT/BSD
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IPC%20OS/TcBSD/getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Khởi tạo, SSH &amp; Device Manager
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IPC%20OS/TcBSD/package-and-service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quản lý gói (pkg) &amp; Dịch vụ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IPC%20OS/TcBSD/backup-restore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sao lưu &amp; Khôi phục (BST / ZFS)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../IPC%20OS/TcLinux/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. TwinCAT RT Linux
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    4. TwinCAT RT Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IPC%20OS/TcLinux/getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Khởi tạo, SSH &amp; Cấu hình mạng
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IPC%20OS/TcLinux/package-and-service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quản lý gói (apt) &amp; Dịch vụ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IPC%20OS/TcLinux/secure-ads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kết nối Secure ADS từ XAE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../TwinCAT/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TwinCAT
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TwinCAT
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../TwinCAT/Tc3/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. TwinCAT 3
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1. TwinCAT 3
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../TwinCAT/Tc3/4026/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1. Cài đặt TwinCAT 4026
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1.1. Cài đặt TwinCAT 4026
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TwinCAT/Tc3/4026/install-tcpkg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cài đặt Package Manager (TCPKG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TwinCAT/Tc3/4026/install-xae/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cài đặt TwinCAT XAE &amp; Workloads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TwinCAT/Tc3/4026/offline-and-cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cài đặt Offline &amp; Quản lý bằng CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../TwinCAT/Tc3/4024/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.2. Cài đặt TwinCAT 4024
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_3" id="__nav_3_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1.2. Cài đặt TwinCAT 4024
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TwinCAT/Tc3/4024/full-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cài đặt TC31-Full-Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TwinCAT/Tc3/4024/remote-manager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cài đặt &amp; Quản lý Remote Manager
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_4">
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_4" id="__nav_3_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.3. Kết nối &amp; Bản quyền
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1.3. Kết nối &amp; Bản quyền
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TwinCAT/Tc3/ads-routing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kết nối ADS &amp; Add Route
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TwinCAT/Tc3/licensing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quản lý Bản quyền (Licensing)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TwinCAT/Tc3/scope-view/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.4. TwinCAT Scope View
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_6">
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_6" id="__nav_3_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.5. Tip and Trick
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1.5. Tip and Trick
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TwinCAT/Tc3/TipAndTrick/TcVersionDefault/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TwinCAT Version Default
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TwinCAT/Tc3/TipAndTrick/win-run-mode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Xử lý lỗi Run Mode trên Windows 10/11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TwinCAT/Tc3/TipAndTrick/library-and-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quản lý Thư viện &amp; Đóng gói (.tpzip)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../TwinCAT/Tc2/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. TwinCAT 2
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2. TwinCAT 2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TwinCAT/Tc2/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cài đặt &amp; Tương thích Windows 32/64-bit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TwinCAT/Tc2/system-manager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cấu hình I/O với System Manager
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TwinCAT/Tc2/plc-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lập trình &amp; Boot Project trong PLC Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TwinCAT/Tc2/migration-to-tc3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chuyển đổi dự án lên TwinCAT 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../EtherCAT/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EtherCAT
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    EtherCAT
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EtherCAT/setup-and-scan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Cài Driver Realtime &amp; Scan I/O
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EtherCAT/esi-files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Quản lý &amp; Cập nhật File ESI (.xml)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EtherCAT/distributed-clocks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Đồng bộ hóa Distributed Clocks (DC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EtherCAT/diagnostics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Chẩn đoán &amp; Xử lý lỗi mạng EtherCAT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EtherCAT/topology-and-hotconnect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Topology, Thay thế thiết bị &amp; Hot Connect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Motion/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Motion
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Motion
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Motion/nc-ptp-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Cấu hình trục cơ bản với NC PTP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Motion/drive-manager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Cấu hình Servo Drive (Drive Manager 2)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Motion/plcopen-programming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Lập trình PLCopen Motion (Tc2_MC2)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Motion/homing-and-encoder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Homing &amp; Lưu vị trí Encoder tuyệt đối
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Motion/camming-and-gearing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Đồng bộ đa trục (Gearing &amp; Camming)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Motion/tuning-and-errors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Tinh chỉnh (Scope View) &amp; Mã lỗi Motion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../HMI/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TwinCAT HMI
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TwinCAT HMI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../HMI/getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Cài đặt &amp; Khởi tạo Project đầu tiên
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../HMI/ads-symbol-mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Liên kết biến PLC (ADS Symbol Mapping)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../HMI/user-and-alarm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Phân quyền, Cảnh báo &amp; Recipe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../HMI/publish-and-ssl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Publish lên IPC &amp; Chứng chỉ SSL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Connectivity/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Truyền thông
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Truyền thông
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Connectivity/modbus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Modbus TCP &amp; Modbus RTU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Connectivity/opc-ua/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. OPC UA Server &amp; Client (TF6100)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Connectivity/mqtt-iot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Truyền thông IoT với MQTT &amp; JSON
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Connectivity/tcpip-serial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. TCP/IP Sockets &amp; Serial COM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Connectivity/fieldbus-gateways/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. PROFINET, EtherNet/IP &amp; CANopen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../TwinSAFE/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TwinSAFE
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TwinSAFE
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TwinSAFE/hardware-and-address/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Phần cứng &amp; Cài đặt DIP Switch FSoE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TwinSAFE/project-and-logic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Tạo Project &amp; Thiết kế Logic an toàn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TwinSAFE/download-and-verify/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Nạp chương trình (Download) &amp; Chẩn đoán
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Example/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ví dụ - Demo
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ví dụ - Demo
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Example/plc-basic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. PLC cơ bản &amp; IEC 61131-3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Example/ethercat-io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Giao tiếp &amp; Chẩn đoán I/O EtherCAT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Example/motion-ptp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Điều khiển trục Motion NC PTP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Example/connectivity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Truyền thông Công nghiệp
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Example/hmi-visu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Giao diện Visualization &amp; TwinCAT HMI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#1-tieu-e-headings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Tiêu đề (Headings)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+  <nav class="md-path" aria-label="Thanh điều hướng">
+    <ol class="md-path__list">
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../.." class="md-path__link">
+          
+  <span class="md-ellipsis">
+    About
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../About/contributing/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Đóng góp tài liệu
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span>Cập nhật lần cuối: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="20 tháng 11, 2026 14:10:52 +07">20 tháng 11, 2026</span></span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+<h1 id="markdown-comprehensive-cheat-sheet-demo">Markdown Comprehensive Cheat Sheet &amp; Demo<a class="headerlink" href="#markdown-comprehensive-cheat-sheet-demo" title="Permanent link">¶</a></h1>
+<p>Tập hợp toàn bộ cú pháp từ cơ bản (CommonMark) đến nâng cao (GitHub Flavored Markdown - GFM) và mở rộng cho MkDocs / Static Site Generators.</p>
+<hr>
+<h2 id="1-tieu-e-headings">1. Tiêu đề (Headings)<a class="headerlink" href="#1-tieu-e-headings" title="Permanent link">¶</a></h2>
+<h1 id="heading-1-dau">Heading 1 (Dấu #)<a class="headerlink" href="#heading-1-dau" title="Permanent link">¶</a></h1>
+<h2 id="heading-2-dau">Heading 2 (Dấu ##)<a class="headerlink" href="#heading-2-dau" title="Permanent link">¶</a></h2>
+<h3 id="heading-3-dau">Heading 3 (Dấu ###)<a class="headerlink" href="#heading-3-dau" title="Permanent link">¶</a></h3>
+<h4 id="heading-4-dau">Heading 4 (Dấu ####)<a class="headerlink" href="#heading-4-dau" title="Permanent link">¶</a></h4>
+<h5 id="heading-5-dau">Heading 5 (Dấu #####)<a class="headerlink" href="#heading-5-dau" title="Permanent link">¶</a></h5>
+<h6 id="heading-6-dau">Heading 6 (Dấu ######)<a class="headerlink" href="#heading-6-dau" title="Permanent link">¶</a></h6>
+<h1 id="heading-1-kieu-setext-gach-duoi-bang-dau">Heading 1 kiểu Setext (Gạch dưới bằng dấu =)<a class="headerlink" href="#heading-1-kieu-setext-gach-duoi-bang-dau" title="Permanent link">¶</a></h1>
+<h2 id="heading-2-kieu-setext-gach-duoi-bang-dau-">Heading 2 kiểu Setext (Gạch dưới bằng dấu -)<a class="headerlink" href="#heading-2-kieu-setext-gach-duoi-bang-dau-" title="Permanent link">¶</a></h2>
+<hr>
+<h2 id="2-inh-dang-van-ban-text-formatting">2. Định dạng văn bản (Text Formatting)<a class="headerlink" href="#2-inh-dang-van-ban-text-formatting" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>In đậm (Bold)</strong>: <code>**Chữ in đậm**</code> hoặc <code>__Chữ in đậm__</code></li>
+<li><em>In nghiêng (Italic)</em>: <code>*Chữ in nghiêng*</code> hoặc <code>_Chữ in nghiêng_</code></li>
+<li><strong><em>In đậm và nghiêng</em></strong>: <code>***Vừa đậm vừa nghiêng***</code> hoặc <code>___Vừa đậm vừa nghiêng___</code></li>
+<li><del>Gạch ngang (Strikethrough)</del>: <code>~~Chữ bị gạch~~</code></li>
+<li><mark>Đánh dấu / Highlight</mark>: <code>==Nội dung tô sáng==</code> <em>(tùy parser)</em></li>
+<li>Chỉ số dưới (Subscript): H<sub>2</sub>O (<code>H~2~O</code>) hoặc <code>H&lt;sub&gt;2&lt;/sub&gt;O</code> -&gt; H<sub>2</sub>O</li>
+<li>Chỉ số trên (Superscript): X<sup>2</sup> (<code>X^2^</code>) hoặc <code>X&lt;sup&gt;2&lt;/sup&gt;</code> -&gt; X<sup>2</sup></li>
+<li><ins>Gạch chân (Underline)</ins>: <code>^^Nội dung gạch dưới^^</code></li>
+<li><kbd>Phím tắt (Keyboard)</kbd> <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-delete">Del</kbd></span>: <code>++ctrl+alt+del++</code></li>
+</ul>
+<hr>
+<h2 id="3-danh-sach-lists">3. Danh sách (Lists)<a class="headerlink" href="#3-danh-sach-lists" title="Permanent link">¶</a></h2>
+<h3 id="31-danh-sach-khong-thu-tu-unordered-list">3.1. Danh sách không thứ tự (Unordered List)<a class="headerlink" href="#31-danh-sach-khong-thu-tu-unordered-list" title="Permanent link">¶</a></h3>
+<ul>
+<li>Mục hoa thị cấp 1<ul>
+<li>Mục con cấp 2 (thụt lề 4 spaces)<ul>
+<li>Mục con cấp 3</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Mục dùng dấu gạch ngang</li>
+<li>Mục dùng dấu cộng</li>
+</ul>
+<hr>
+<p>* Mục hiển thị trực tiếp dấu hoa thị cấp 1</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;* Mục con cấp 2</p>
+<p>- Mục hiển thị trực tiếp dấu gạch ngang</p>
+<p>+ Mục hiển thị trực tiếp dấu cộng</p>
+<h3 id="32-danh-sach-co-thu-tu-ordered-list">3.2. Danh sách có thứ tự (Ordered List)<a class="headerlink" href="#32-danh-sach-co-thu-tu-ordered-list" title="Permanent link">¶</a></h3>
+<ol>
+<li>Bước đầu tiên</li>
+<li>Bước thứ hai<ol>
+<li>Bước phụ 2.1</li>
+<li>Bước phụ 2.2</li>
+</ol>
+</li>
+<li>Bước thứ ba</li>
+</ol>
+<h3 id="33-danh-sach-cong-viec-task-list-checkbox">3.3. Danh sách công việc (Task List / Checkbox)<a class="headerlink" href="#33-danh-sach-cong-viec-task-list-checkbox" title="Permanent link">¶</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled="" checked=""><span class="task-list-indicator"></span></label> Đã hoàn thành tác vụ 1</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> Chưa hoàn thành tác vụ 2</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> Tác vụ 3 đang chờ xử lý</li>
+</ul>
+<hr>
+<h2 id="4-oan-trich-dan-blockquotes">4. Đoạn trích dẫn (Blockquotes)<a class="headerlink" href="#4-oan-trich-dan-blockquotes" title="Permanent link">¶</a></h2>
+<blockquote>
+<p>Đây là một khối trích dẫn đơn.
+Bạn có thể viết nhiều dòng liên tục.</p>
+<blockquote>
+<p>Trích dẫn lồng nhau cấp 2.</p>
+<blockquote>
+<p>Trích dẫn lồng nhau cấp 3.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<hr>
+<h2 id="5-lien-ket-links-hinh-anh-images">5. Liên kết (Links) &amp; Hình ảnh (Images)<a class="headerlink" href="#5-lien-ket-links-hinh-anh-images" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>Link nội tuyến:</strong> <a href="https://www.google.com" title="Chú thích khi rê chuột">Trang chủ Google</a></li>
+<li><strong>Link tự động:</strong> <a href="https://github.com">https://github.com</a> hoặc email: <a href="mailto:contact@example.com">contact@example.com</a></li>
+<li>
+<p><strong>Link tham chiếu (Reference Link):</strong>
+  Truy cập vào <a href="https://www.beckhoff.com" title="Beckhoff Automation">Beckhoff</a> để xem tài liệu.</p>
+</li>
+<li>
+<p><strong>Hình ảnh:</strong>
+  <a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="https://via.placeholder.com/400x150.png?text=Markdown+Sample+Image" data-desc-position="bottom"><img alt="Mô tả ảnh" src="https://via.placeholder.com/400x150.png?text=Markdown+Sample+Image" title="Ảnh minh họa"></a></p>
+</li>
+<li>
+<p><strong>Hình ảnh kèm liên kết:</strong>
+  <a href="https://mkdocs.org"><img alt="Logo Clickable" src="https://via.placeholder.com/150x50.png?text=Click+Me"></a></p>
+</li>
+</ul>
+<hr>
+<h2 id="6-khoi-ma-lenh-code">6. Khối mã lệnh (Code)<a class="headerlink" href="#6-khoi-ma-lenh-code" title="Permanent link">¶</a></h2>
+<h3 id="61-inline-code">6.1. Inline Code<a class="headerlink" href="#61-inline-code" title="Permanent link">¶</a></h3>
+<p>Dùng cặp dấu backtick: <code>var myVar = 10;</code> hoặc <code>echo "Hello World"</code>.</p>
+<h3 id="62-fenced-code-block-khoi-ma-co-to-mau-cu-phap">6.2. Fenced Code Block (Khối mã có tô màu cú pháp)<a class="headerlink" href="#62-fenced-code-block-khoi-ma-co-to-mau-cu-phap" title="Permanent link">¶</a></h3>
+<h4 id="ma-plc-iec-61131-3-structured-text-iecst-hoac-st">Mã PLC IEC 61131-3 Structured Text (<code>```iecst</code> hoặc <code>```st</code>)<a class="headerlink" href="#ma-plc-iec-61131-3-structured-text-iecst-hoac-st" title="Permanent link">¶</a></h4>
+<div class="language-iecst highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">{attribute 'qualified_only'}</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">FUNCTION_BLOCK</span><span class="w"> </span><span class="n">FB_ConveyorControl</span><span class="w"> </span><span class="kd">EXTENDS</span><span class="w"> </span><span class="n">FB_BaseDevice</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kd">VAR_INPUT</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">bEnable</span><span class="w">     </span><span class="o">:</span><span class="w"> </span><span class="kt">BOOL</span><span class="p">;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">tDelayTime</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="kt">TIME</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="ld">T#2s500ms</span><span class="p">;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kd">END_VAR</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kd">VAR_OUTPUT</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="n">bMotorOut</span><span class="w"> </span><span class="kd">AT</span><span class="w"> </span>%<span class="n">Q</span><span class="o">*</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">BOOL</span><span class="p">;</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="n">nErrorId</span><span class="w">         </span><span class="o">:</span><span class="w"> </span><span class="kt">UDINT</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mh">16#0000</span><span class="p">;</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="kd">END_VAR</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="kd">VAR</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="n">fbDelayTimer</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nb">TON</span><span class="p">;</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="n">fbStartTrig</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="nb">R_TRIG</span><span class="p">;</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="n">nStep</span><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="kt">INT</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="kd">END_VAR</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="c1">// Bắt sườn lên và chạy bộ định thời gian khởi động băng tải</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="nf">fbStartTrig</span><span class="p">(</span><span class="n">CLK</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">bEnable</span><span class="p">);</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="nf">fbDelayTimer</span><span class="p">(</span><span class="n">IN</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">bEnable</span><span class="p">,</span><span class="w"> </span><span class="n">PT</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">tDelayTime</span><span class="p">);</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="kr">CASE</span><span class="w"> </span><span class="n">nStep</span><span class="w"> </span><span class="kr">OF</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="mi">0</span><span class="o">:</span><span class="w"> </span><span class="cm">(* Trạng thái chờ *)</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">        </span><span class="n">bMotorOut</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">        </span><span class="kr">IF</span><span class="w"> </span><span class="n">fbStartTrig</span><span class="p">.</span><span class="n">Q</span><span class="w"> </span><span class="kr">THEN</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">            </span><span class="n">nStep</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">        </span><span class="kr">END_IF</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">    </span><span class="mi">10</span><span class="o">:</span><span class="w"> </span><span class="cm">(* Đợi đủ thời gian trễ an toàn *)</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">        </span><span class="kr">IF</span><span class="w"> </span><span class="n">fbDelayTimer</span><span class="p">.</span><span class="n">Q</span><span class="w"> </span><span class="kr">THEN</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">            </span><span class="n">bMotorOut</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">;</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">        </span><span class="kr">ELSIF</span><span class="w"> </span><span class="ow">NOT</span><span class="w"> </span><span class="n">bEnable</span><span class="w"> </span><span class="kr">THEN</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">            </span><span class="n">nStep</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">        </span><span class="kr">END_IF</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="kr">END_CASE</span>
+</span></code></pre></div>
+<h4 id="ma-python-xml-json-python-xml-json">Mã Python, XML &amp; JSON (<code>```python</code>, <code>```xml</code>, <code>```json</code>)<a class="headerlink" href="#ma-python-xml-json-python-xml-json" title="Permanent link">¶</a></h4>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">tinh_tong</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="sd">"""Hàm tính tổng 2 số nguyên"""</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Kết quả:"</span><span class="p">,</span> <span class="n">tinh_tong</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</span></code></pre></div>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">&lt;RemoteControl&gt;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nt">&lt;Enabled&gt;</span>1<span class="nt">&lt;/Enabled&gt;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nt">&lt;Password&gt;</span>ju6mRyIslrAMkBdayCE+N5Ods5ymtOvo<span class="nt">&lt;/Password&gt;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nt">&lt;/RemoteControl&gt;</span>
+</span></code></pre></div>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">"project"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wiki Docs"</span><span class="p">,</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<hr>
+<h2 id="7-bang-tables">7. Bảng (Tables)<a class="headerlink" href="#7-bang-tables" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">STT</th>
+<th style="text-align: left;">Tên thuộc tính</th>
+<th style="text-align: right;">Kiểu dữ liệu</th>
+<th style="text-align: left;">Ý nghĩa / Ghi chú</th>
+<th style="text-align: left;">Căn lề</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">01</td>
+<td style="text-align: left;"><code>id</code></td>
+<td style="text-align: right;">Integer</td>
+<td style="text-align: left;">Khóa định danh</td>
+<td style="text-align: left;">Giữa</td>
+</tr>
+<tr>
+<td style="text-align: center;">02</td>
+<td style="text-align: left;"><code>username</code></td>
+<td style="text-align: right;">String</td>
+<td style="text-align: left;">Tên tài khoản</td>
+<td style="text-align: left;">Trái</td>
+</tr>
+<tr>
+<td style="text-align: center;">03</td>
+<td style="text-align: left;"><code>balance</code></td>
+<td style="text-align: right;">Float</td>
+<td style="text-align: left;">Số dư tài khoản</td>
+<td style="text-align: left;">Phải</td>
+</tr>
+</tbody>
+</table>
+<p><em>(Lưu ý: <code>:---</code> căn trái, <code>:---:</code> căn giữa, <code>---:</code> căn phải)</em></p>
+<hr>
+<h2 id="8-chu-thich-chan-trang-footnotes">8. Chú thích chân trang (Footnotes)<a class="headerlink" href="#8-chu-thich-chan-trang-footnotes" title="Permanent link">¶</a></h2>
+<p>Đoạn văn bản có sử dụng chú thích chân trang ở đây<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> và thêm một nguồn tham khảo khác<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</p>
+<hr>
+<h2 id="9-the-ong-mo-chi-tiet-an-details-summary">9. Thẻ đóng mở / Chi tiết ẩn (Details &amp; Summary)<a class="headerlink" href="#9-the-ong-mo-chi-tiet-an-details-summary" title="Permanent link">¶</a></h2>
+<details>
+<summary><b>Bấm vào đây để xem chi tiết ẩn</b></summary>
+
+Nội dung bên trong phần thu gọn:
+- Thông tin cấu hình chi tiết
+- Mã lỗi hệ thống
+- Hướng dẫn phụ trợ
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>twincat
+</span></code></pre></div>
+</details>
+
+<hr>
+<h2 id="10-hop-ghi-chu-canh-bao-admonitions-callouts">10. Hộp ghi chú / Cảnh báo (Admonitions / Callouts)<a class="headerlink" href="#10-hop-ghi-chu-canh-bao-admonitions-callouts" title="Permanent link">¶</a></h2>
+<p><em>(Thường dùng trong MkDocs Material, Obsidian, GitHub)</em></p>
+<div class="admonition note">
+<p class="admonition-title">Ghi chú (Note)</p>
+<p>Đây là hộp ghi chú cung cấp thêm thông tin hữu ích cho người đọc.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Mẹo thực hiện (Tip)</p>
+<p>Nhấn <code>Ctrl + Space</code> để mở gợi ý mã nhanh trong Visual Studio Code.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Cảnh báo (Warning)</p>
+<p>Hãy sao lưu cấu hình hệ thống trước khi thay đổi file XML trong <abbr title="Beckhoff Service Tool — Công cụ sao lưu và phục hồi hệ điều hành IPC">BST</abbr>.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Nguy hiểm (Danger)</p>
+<p>Không ngắt nguồn điện khi PLC đang nạp chương trình runtime.</p>
+</div>
+<hr>
+<h2 id="11-cong-thuc-toan-hoc-math-latex">11. Công thức toán học (Math / LaTeX)<a class="headerlink" href="#11-cong-thuc-toan-hoc-math-latex" title="Permanent link">¶</a></h2>
+<ul>
+<li>Toán học inline: Phương trình năng lượng <span class="arithmatex">\(E = mc^2\)</span> hoặc hàm số <span class="arithmatex">\(f(x) = ax^2 + bx + c\)</span>.</li>
+<li>Khối toán học (Block Math):</li>
+</ul>
+<div class="arithmatex">\[
+\frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+\]</div>
+<div class="arithmatex">\[
+\sum_{i=1}^{n} i = \frac{n(n+1)}{2}
+\]</div>
+<hr>
+<h2 id="12-bieu-o-mermaid-diagrams">12. Biểu đồ Mermaid (Diagrams)<a class="headerlink" href="#12-bieu-o-mermaid-diagrams" title="Permanent link">¶</a></h2>
+<p><em>(Hỗ trợ trực tiếp trên MkDocs, GitHub, Notion)</em></p>
+<pre class="mermaid"><code>graph TD;
+    A[Bắt đầu] --&gt; B{Kiểm tra kết nối};
+    B -- Thành công --&gt; C[Truy cập VNC];
+    B -- Thất bại --&gt; D[Kiểm tra IP &amp; Dây mạng];
+    D --&gt; B;</code></pre>
+<hr>
+<h2 id="13-ky-tu-ac-biet-escape-characters">13. Ký tự đặc biệt &amp; Escape Characters<a class="headerlink" href="#13-ky-tu-ac-biet-escape-characters" title="Permanent link">¶</a></h2>
+<p>Để hiển thị các ký tự vốn là cú pháp markdown, thêm dấu <code>\</code> phía trước:
+- <code>\*</code> hiển thị: *
+- <code>\#</code> hiển thị: #
+- <code>\[</code> hiển thị: [
+- <code>\_</code> hiển thị: _
+- <code>\</code> hiển thị: \</p>
+<hr>
+<h2 id="14-uong-phan-cach-ngang-horizontal-rule">14. Đường phân cách ngang (Horizontal Rule)<a class="headerlink" href="#14-uong-phan-cach-ngang-horizontal-rule" title="Permanent link">¶</a></h2>
+<p>Sử dụng 3 dấu gạch ngang, 3 dấu sao hoặc 3 dấu gạch dưới:</p>
+<hr>
+<hr>
+<h2 id="___">___<a class="headerlink" href="#___" title="Permanent link">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Ghi chú (Note)</p>
+<p>Cung cấp thông tin bổ sung liên quan đến ngữ cảnh hiện tại.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Tóm tắt (Abstract / Summary / Tldr)</p>
+<p>Tóm lược ngắn gọn nội dung cốt lõi của bài viết hoặc giải pháp kỹ thuật.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Thông tin (Info / Todo)</p>
+<p>Nêu rõ các chi tiết kỹ thuật hoặc lưu ý cần kiểm tra.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Mẹo thực hiện (Tip / Hint)</p>
+<p>Nhấn <code>F5</code> trong TwinCAT <abbr title="eXtended Automation Engineering — Môi trường lập trình và cấu hình TwinCAT">XAE</abbr> để nạp chương trình và kích hoạt chế độ Run Mode nhanh.</p>
+</div>
+<div class="admonition success">
+<p class="admonition-title">Thành công (Success / Check / Done)</p>
+<p>Hệ thống <abbr title="Automation Device Specification — Giao thức truyền thông chuẩn của Beckhoff">ADS</abbr> Router đã kết nối thành công tới <abbr title="Industrial PC — Máy tính công nghiệp của Beckhoff">IPC</abbr> Beckhoff.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Câu hỏi &amp; Giải đáp (Question / Help / Faq)</p>
+<p>Làm sao để biết VNC Server đã kích hoạt? Hãy kiểm tra cổng mặc định 5900.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Cảnh báo (Warning / Caution / Attention)</p>
+<p>Cần cấu hình đúng dải IP tĩnh trước khi ghi đè cài đặt mạng trên Windows CE / TcBSD.</p>
+</div>
+<div class="admonition failure">
+<p class="admonition-title">Lỗi thất bại (Failure / Fail / Missing)</p>
+<p>Không tìm thấy địa chỉ AmsNetId của thiết bị điều khiển đích trên mạng EtherCAT.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Nguy hiểm (Danger / Error)</p>
+<p>Không rút thẻ nhớ CFast hoặc ngắt nguồn khi PLC đang trong quá trình ghi dữ liệu lưu trữ (Persistent Data).</p>
+</div>
+<div class="admonition bug">
+<p class="admonition-title">Lỗi phần mềm (Bug)</p>
+<p>Phiên bản build 4024.10 có thể gặp xung đột khi kết nối với một số dòng card Intel I210.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Ví dụ thực tế (Example)</p>
+<p>Cấu hình mẫu cho giao thức <abbr title="Automation Device Specification — Giao thức truyền thông chuẩn của Beckhoff">ADS</abbr> qua cổng TCP port 48898.</p>
+</div>
+<div class="admonition quote">
+<p class="admonition-title">Trích dẫn (Quote / Cite)</p>
+<p>"Simplicity is prerequisite for reliability." – Edsger W. Dijkstra</p>
+</div>
+<hr>
+<!-- Đổi tên tiêu đề tùy ý bằng cách đặt trong dấu ngoặc kép -->
+<div class="admonition tip">
+<p class="admonition-title">Bí kíp tối ưu vòng quét Task PLC</p>
+<p>Nên tách riêng Task điều khiển Motion (chu kỳ 1ms) và Task xử lý giao diện HMI (chu kỳ 50-100ms).</p>
+</div>
+<!-- Bỏ hoàn toàn thanh tiêu đề bằng cặp dấu ngoặc kép rỗng "" -->
+<div class="admonition note">
+<p>Khung này không có dòng chữ tiêu đề, chỉ hiển thị biểu tượng và nội dung thông báo.</p>
+</div>
+<hr>
+<!-- Mặc định đóng lại, bấm vào để bung ra -->
+<details class="note">
+<summary>Bấm vào để xem mã lỗi chi tiết (0x80070002)</summary>
+<p>Mã lỗi này biểu thị hệ thống không tìm thấy file cài đặt trong đường dẫn chỉ định.
+Hãy kiểm tra lại thư mục <code>C:\TwinCAT\3.1\Target</code>.</p>
+</details>
+<!-- Mặc định mở sẵn, bấm vào để thu nhỏ lại -->
+<details class="tip" open="open">
+<summary>Hướng dẫn lấy địa chỉ AmsNetId qua cmd</summary>
+<p>Mở Command Prompt và chạy lệnh sau để kiểm tra mạng cục bộ:
+</p><div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ping<span class="w"> </span><span class="m">192</span>.168.1.100
+</span></code></pre></div><p></p>
+</details>
+<hr>
+<ol>
+<li>Cắm USB chứa bộ cài đặt vào máy tính <abbr title="Industrial PC — Máy tính công nghiệp của Beckhoff">IPC</abbr>.</li>
+<li>
+<p>Khởi động lại thiết bị và bấm <code>F11</code> liên tục để vào BIOS Boot Menu.</p>
+<div class="admonition warning">
+<p class="admonition-title">Cảnh báo thao tác BIOS</p>
+<p>Không thay đổi thứ tự ưu tiên của ổ đĩa hệ thống chính nếu bạn chỉ boot tạm thời một lần.</p>
+</div>
+</li>
+<li>
+<p>Chọn thiết bị boot là USB flash drive để bắt đầu chạy công cụ <abbr title="Beckhoff Service Tool — Công cụ sao lưu và phục hồi hệ điều hành IPC">BST</abbr>.</p>
+</li>
+</ol>
+<hr>
+<div class="admonition info inline end">
+<p class="admonition-title">Thông số kỹ thuật</p>
+<ul>
+<li>Nguồn: 24V DC</li>
+<li>Cổng giao tiếp: 2 x RJ45</li>
+<li>RAM: 4GB DDR4</li>
+</ul>
+</div>
+<p>Dòng <abbr title="Industrial PC — Máy tính công nghiệp của Beckhoff">IPC</abbr> này là giải pháp chuyên dụng cho các dây chuyền lắp ráp linh kiện điện tử nhờ kích thước nhỏ gọn và khả năng lắp đặt trực tiếp trên thanh ray DIN-Rail tiêu chuẩn.</p>
+<h2 id="-">---<a class="headerlink" href="#-" title="Permanent link">¶</a></h2>
+<h2 id="flowchart">Flowchart<a class="headerlink" href="#flowchart" title="Permanent link">¶</a></h2>
+<pre class="mermaid"><code>graph LR
+  A[Start] --&gt; B{Error?};
+  B --&gt;|Yes| C[Hmm...];
+  C --&gt; D[Debug];
+  D --&gt; B;
+  B ----&gt;|No| E[Yay!];</code></pre>
+<h2 id="sequence-diagrams">Sequence diagrams<a class="headerlink" href="#sequence-diagrams" title="Permanent link">¶</a></h2>
+<pre class="mermaid"><code>sequenceDiagram
+  autonumber
+  Alice-&gt;&gt;John: Hello John, how are you?
+  loop Healthcheck
+      John-&gt;&gt;John: Fight against hypochondria
+  end
+  Note right of John: Rational thoughts!
+  John--&gt;&gt;Alice: Great!
+  John-&gt;&gt;Bob: How about you?
+  Bob--&gt;&gt;John: Jolly good!</code></pre>
+<h2 id="state-diagrams">State diagrams<a class="headerlink" href="#state-diagrams" title="Permanent link">¶</a></h2>
+<pre class="mermaid"><code>stateDiagram-v2
+  state fork_state &lt;&lt;fork&gt;&gt;
+    [*] --&gt; fork_state
+    fork_state --&gt; State2
+    fork_state --&gt; State3
+
+    state join_state &lt;&lt;join&gt;&gt;
+    State2 --&gt; join_state
+    State3 --&gt; join_state
+    join_state --&gt; State4
+    State4 --&gt; [*]</code></pre>
+<h2 id="class-diagrams">Class diagrams<a class="headerlink" href="#class-diagrams" title="Permanent link">¶</a></h2>
+<pre class="mermaid"><code>classDiagram
+  Person &lt;|-- Student
+  Person &lt;|-- Professor
+  Person : +String name
+  Person : +String phoneNumber
+  Person : +String emailAddress
+  Person: +purchaseParkingPass()
+  Address "1" &lt;-- "0..1" Person:lives at
+  class Student{
+    +int studentNumber
+    +int averageMark
+    +isEligibleToEnrol()
+    +getSeminarsTaken()
+  }
+  class Professor{
+    +int salary
+  }
+  class Address{
+    +String street
+    +String city
+    +String state
+    +int postalCode
+    +String country
+    -validate()
+    +outputAsLabel()
+  }</code></pre>
+<hr>
+<h2 id="15-tinh-nang-mo-rong-nang-cao-mkdocs-material">15. Tính năng mở rộng nâng cao (MkDocs Material)<a class="headerlink" href="#15-tinh-nang-mo-rong-nang-cao-mkdocs-material" title="Permanent link">¶</a></h2>
+<h3 id="151-icon-emoji-pymdownxemoji">15.1. Icon &amp; Emoji (<code>pymdownx.emoji</code>)<a class="headerlink" href="#151-icon-emoji-pymdownxemoji" title="Permanent link">¶</a></h3>
+<ul>
+<li>Biểu tượng kỹ thuật: <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v2H7a2 2 0 0 0-2 2v2H3v2h2v2H3v2h2v2a2 2 0 0 0 2 2h2v2h2v-2h2v2h2v-2h2a2 2 0 0 0 2-2v-2h2v-2h-2v-2h2V9h-2V7a2 2 0 0 0-2-2h-2V3h-2v2h-2V3M8 9h3.5v1.5h-3v.75h2a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1m4.5 0H14v2h1.5V9H17v6h-1.5v-2.5h-3m-4 .25v.75H10v-.75"></path></svg></span> <abbr title="Industrial PC — Máy tính công nghiệp của Beckhoff">IPC</abbr>, <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 1c-1.11 0-2 .89-2 2v4c0 1.11.89 2 2 2H1v2h12V9h-3c1.11 0 2-.89 2-2V3c0-1.11-.89-2-2-2zm0 2h6v4H4zM3 13v7h7v-2H5v-5zm11 0c-1.11 0-2 .89-2 2v4c0 1.11.89 2 2 2h-3v2h12v-2h-3c1.11 0 2-.89 2-2v-4c0-1.11-.89-2-2-2zm0 2h6v4h-6z"></path></svg></span> EtherCAT, <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 12V6.75l6-1.32v6.48zm17-9v8.75l-10 .15V5.21zM3 13l6 .09v6.81l-6-1.15zm17 .25V22l-10-1.91V13.1z"></path></svg></span> Windows, <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.62 8.35c-.42.28-1.75 1.04-1.95 1.19-.39.31-.75.29-1.14-.01-.2-.16-1.53-.92-1.95-1.19-.48-.31-.45-.7.08-.92 1.64-.69 3.28-.64 4.91.03.49.21.51.6.05.9m7.22 7.28c-.93-2.09-2.2-3.99-3.84-5.66a4.3 4.3 0 0 1-1.06-1.88c-.1-.33-.17-.67-.24-1.01-.2-.88-.29-1.78-.7-2.61-.73-1.58-2-2.4-3.84-2.47-1.81.05-3.16.81-3.95 2.4-.21.43-.36.88-.46 1.34-.17.76-.32 1.55-.5 2.32-.15.65-.45 1.21-.96 1.71-1.61 1.57-2.9 3.37-3.88 5.35-.14.29-.28.58-.37.88-.19.66.29 1.12.99.96.44-.09.88-.18 1.3-.31.41-.15.57-.05.67.35.65 2.15 2.07 3.66 4.24 4.5 4.12 1.56 8.93-.66 9.97-4.58.07-.27.17-.37.47-.27.46.14.93.24 1.4.35.49.09.85-.16.92-.64.03-.26-.06-.49-.16-.73"></path></svg></span> TwinCAT RT Linux, <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 13H3c-.55 0-1-.45-1-1s.45-1 1-1h4c.55 0 1 .45 1 1s-.45 1-1 1M6 8c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1h1c.55 0 1-.45 1-1m16 4c0 2.76-2.24 5-5 5H4c-.55 0-1-.45-1-1s.45-1 1-1h9c-.42-.58-.75-1.26-.9-2H10c-.55 0-1-.45-1-1s.45-1 1-1h2.1c.15-.74.48-1.42.9-2H8c-.55 0-1-.45-1-1s.45-1 1-1h9c2.76 0 5 2.24 5 5m-2 0c0-1.65-1.35-3-3-3s-3 1.35-3 3 1.35 3 3 3 3-1.35 3-3"></path></svg></span> Motion Control, <span class="twemoji" style="color: #16a34a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"></path></svg></span> Sẵn sàng.</li>
+</ul>
+<h3 id="152-tab-noi-dung-a-phien-ban-pymdownxtabbed">15.2. Tab nội dung đa phiên bản (<code>pymdownx.tabbed</code>)<a class="headerlink" href="#152-tab-noi-dung-a-phien-ban-pymdownxtabbed" title="Permanent link">¶</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><input id="__tabbed_1_3" name="__tabbed_1" type="radio"><input id="__tabbed_1_4" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">TwinCAT 3.1 Build 4024</label><label for="__tabbed_1_2">TwinCAT 3.1 Build 4026</label><label for="__tabbed_1_3">Windows</label><label for="__tabbed_1_4">TwinCAT/BSD</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Cài đặt thông qua bộ cài <strong>TC31-Full-Setup</strong> truyền thống.</p>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c"># Kiểm tra đường dẫn TwinCAT mặc định</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">dir </span><span class="s2">"C:\TwinCAT\3.1\Target"</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Cài đặt và quản lý gói thông qua <strong>TwinCAT Package Manager (TCPKG)</strong>.</p>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c"># Liệt kê gói đã cài bằng tcpkg</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">tcpkg</span> <span class="n">list</span> <span class="n">-i</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Sử dụng <strong>Beckhoff Service Tool (<abbr title="Beckhoff Service Tool — Công cụ sao lưu và phục hồi hệ điều hành IPC">BST</abbr>)</strong> để sao lưu / khôi phục ảnh hệ điều hành.</p>
+</div>
+<div class="tabbed-block">
+<p>Quản trị hệ thống thông qua SSH hoặc giao diện console dòng lệnh.</p>
+</div>
+</div>
+</div>
+<h3 id="153-giai-thich-thuat-ngu-tu-ong-abbr">15.3. Giải thích thuật ngữ tự động (<code>abbr</code>)<a class="headerlink" href="#153-giai-thich-thuat-ngu-tu-ong-abbr" title="Permanent link">¶</a></h3>
+<p>Khi viết tài liệu chứa các từ viết tắt như <abbr title="Industrial PC — Máy tính công nghiệp của Beckhoff">IPC</abbr>, <abbr title="Beckhoff Service Tool — Công cụ sao lưu và phục hồi hệ điều hành IPC">BST</abbr>, <abbr title="eXtended Automation Engineering — Môi trường lập trình và cấu hình TwinCAT">XAE</abbr>, <abbr title="Automation Device Specification — Giao thức truyền thông chuẩn của Beckhoff">ADS</abbr> hoặc <abbr title="EtherCAT Slave Information — File XML mô tả thông số thiết bị EtherCAT">ESI</abbr>, người đọc có thể rê chuột vào thuật ngữ để xem giải thích nhanh.</p>
+<h3 id="154-the-danh-muc-dang-luoi-grid-cards-md_in_html-attr_list">15.4. Thẻ danh mục dạng lưới — Grid Cards (<code>md_in_html</code> + <code>attr_list</code>)<a class="headerlink" href="#154-the-danh-muc-dang-luoi-grid-cards-md_in_html-attr_list" title="Permanent link">¶</a></h3>
+<div class="grid cards">
+<ul>
+<li>
+<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v2H7a2 2 0 0 0-2 2v2H3v2h2v2H3v2h2v2a2 2 0 0 0 2 2h2v2h2v-2h2v2h2v-2h2a2 2 0 0 0 2-2v-2h2v-2h-2v-2h2V9h-2V7a2 2 0 0 0-2-2h-2V3h-2v2h-2V3M8 9h3.5v1.5h-3v.75h2a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1m4.5 0H14v2h1.5V9H17v6h-1.5v-2.5h-3m-4 .25v.75H10v-.75"></path></svg></span> <strong><abbr title="Industrial PC — Máy tính công nghiệp của Beckhoff">IPC</abbr> OS</strong></p>
+<hr>
+<p>Hướng dẫn cấu hình Windows, TwinCAT/BSD, TwinCAT RT Linux và công cụ <abbr title="Beckhoff Service Tool — Công cụ sao lưu và phục hồi hệ điều hành IPC">BST</abbr>.</p>
+</li>
+<li>
+<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m-2 12c-.25 0-.46-.18-.5-.42l-.37-2.65c-.63-.25-1.17-.59-1.69-.99l-2.49 1.01c-.22.08-.49 0-.61-.22l-2-3.46a.493.493 0 0 1 .12-.64l2.11-1.66L4.5 12l.07-1-2.11-1.63a.493.493 0 0 1-.12-.64l2-3.46c.12-.22.39-.31.61-.22l2.49 1c.52-.39 1.06-.73 1.69-.98l.37-2.65c.04-.24.25-.42.5-.42h4c.25 0 .46.18.5.42l.37 2.65c.63.25 1.17.59 1.69.98l2.49-1c.22-.09.49 0 .61.22l2 3.46c.13.22.07.49-.12.64L19.43 11l.07 1-.07 1 2.11 1.63c.19.15.25.42.12.64l-2 3.46c-.12.22-.39.31-.61.22l-2.49-1c-.52.39-1.06.73-1.69.98l-.37 2.65c-.04.24-.25.42-.5.42zm1.25-18-.37 2.61c-1.2.25-2.26.89-3.03 1.78L5.44 7.35l-.75 1.3L6.8 10.2a5.55 5.55 0 0 0 0 3.6l-2.12 1.56.75 1.3 2.43-1.04c.77.88 1.82 1.52 3.01 1.76l.37 2.62h1.52l.37-2.61c1.19-.25 2.24-.89 3.01-1.77l2.43 1.04.75-1.3-2.12-1.55c.4-1.17.4-2.44 0-3.61l2.11-1.55-.75-1.3-2.41 1.04a5.42 5.42 0 0 0-3.03-1.77L12.75 4z"></path></svg></span> <strong>TwinCAT 3</strong></p>
+<hr>
+<p>Cài đặt Build 4024 / 4026, tối ưu Task PLC và các mẹo sử dụng <abbr title="eXtended Automation Engineering — Môi trường lập trình và cấu hình TwinCAT">XAE</abbr>.</p>
+</li>
+<li>
+<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 1c-1.11 0-2 .89-2 2v4c0 1.11.89 2 2 2H1v2h12V9h-3c1.11 0 2-.89 2-2V3c0-1.11-.89-2-2-2zm0 2h6v4H4zM3 13v7h7v-2H5v-5zm11 0c-1.11 0-2 .89-2 2v4c0 1.11.89 2 2 2h-3v2h12v-2h-3c1.11 0 2-.89 2-2v-4c0-1.11-.89-2-2-2zm0 2h6v4h-6z"></path></svg></span> <strong>EtherCAT</strong></p>
+<hr>
+<p>Cấu hình mạng EtherCAT, nạp file <abbr title="EtherCAT Slave Information — File XML mô tả thông số thiết bị EtherCAT">ESI</abbr> và chẩn đoán lỗi truyền thông.</p>
+</li>
+<li>
+<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 13H3c-.55 0-1-.45-1-1s.45-1 1-1h4c.55 0 1 .45 1 1s-.45 1-1 1M6 8c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1h1c.55 0 1-.45 1-1m16 4c0 2.76-2.24 5-5 5H4c-.55 0-1-.45-1-1s.45-1 1-1h9c-.42-.58-.75-1.26-.9-2H10c-.55 0-1-.45-1-1s.45-1 1-1h2.1c.15-.74.48-1.42.9-2H8c-.55 0-1-.45-1-1s.45-1 1-1h9c2.76 0 5 2.24 5 5m-2 0c0-1.65-1.35-3-3-3s-3 1.35-3 3 1.35 3 3 3 3-1.35 3-3"></path></svg></span> <strong>Motion Control</strong></p>
+<hr>
+<p>Thiết lập trục servo, NC PTP và tối ưu thông số điều khiển chuyển động.</p>
+</li>
+</ul>
+</div>
+<h3 id="155-chu-thich-tung-dong-trong-khoi-ma-contentcodeannotate">15.5. Chú thích từng dòng trong khối mã (<code>content.code.annotate</code>)<a class="headerlink" href="#155-chu-thich-tung-dong-trong-khoi-ma-contentcodeannotate" title="Permanent link">¶</a></h3>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">&lt;RemoteControl&gt;</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="nt">&lt;Enabled&gt;</span>1<span class="nt">&lt;/Enabled&gt;</span><span class="w"> </span><span class="cm">&lt;!-- (1)! --&gt;</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="nt">&lt;Password&gt;</span>ju6mRyIslrAMkBdayCE+N5Ods5ymtOvo<span class="nt">&lt;/Password&gt;</span><span class="w"> </span><span class="cm">&lt;!-- (2)! --&gt;</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nt">&lt;/RemoteControl&gt;</span>
+</span></code></pre></div>
+<ol>
+<li>Đặt giá trị <code>1</code> để bật VNC Server trên <abbr title="Beckhoff Service Tool — Công cụ sao lưu và phục hồi hệ điều hành IPC">BST</abbr> khi khởi động.</li>
+<li>Chuỗi mật khẩu mã hóa mặc định (tương ứng mật khẩu <code>1</code>).</li>
+</ol>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Đây là nội dung giải thích chi tiết cho chú thích số 1, hiển thị ở cuối bài viết.&nbsp;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+<li id="fn:2">
+<p>Xem thêm tại tài liệu kỹ thuật TwinCAT 3 Information System.&nbsp;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">↩</a></p>
+</li>
+</ol>
+</div>
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden="">
+    <fieldset>
+      <legend class="md-feedback__title">
+        Tài liệu này có hữu ích với bạn không?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="Tài liệu hữu ích" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"></path></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="Cần cải thiện thêm" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"></path></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden="">
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Cảm ơn bạn đã đánh giá! Nếu muốn chia sẻ thêm nhận xét, hãy <a href="https://github.com/BA-VN/wiki/issues/new?title=%5BH%E1%BB%AFu%20%C3%ADch%5D%20V%C3%AD%20d%E1%BB%A5%20-%20Mark%20down&amp;body=**Trang%3A**%20https%3A%2F%2Fba-vn.github.io%2Fwiki/sample-markdown/sample_markdown/%0A**%C4%90%C3%A1nh%20gi%C3%A1%3A**%20H%E1%BB%AFu%20%C3%ADch%0A%0A**Nh%E1%BA%ADn%20x%C3%A9t%20%2F%20%C4%90%E1%BB%81%20xu%E1%BA%A5t%20th%C3%AAm%3A**%0A" target="_blank" rel="noopener">mở GitHub Issue</a>.
+            </div>
+          
+            <div data-md-value="0" hidden="">
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Cảm ơn góp ý của bạn! Hãy giúp chúng tôi cải thiện trang này bằng cách <a href="https://github.com/BA-VN/wiki/issues/new?title=%5BC%E1%BA%A7n%20c%E1%BA%A3i%20thi%E1%BB%87n%5D%20V%C3%AD%20d%E1%BB%A5%20-%20Mark%20down&amp;body=**Trang%3A**%20https%3A%2F%2Fba-vn.github.io%2Fwiki/sample-markdown/sample_markdown/%0A**%C4%90%C3%A1nh%20gi%C3%A1%3A**%20C%E1%BA%A7n%20c%E1%BA%A3i%20thi%E1%BB%87n%0A%0A**N%E1%BB%99i%20dung%20c%E1%BA%A7n%20b%E1%BB%95%20sung%20%2F%20s%E1%BB%ADa%20l%E1%BB%97i%3A**%0A" target="_blank" rel="noopener">gửi góp ý qua GitHub Issues</a> hoặc email về <a href="mailto:support@beckhoff.com.vn?subject=Gop%20y%20BA-VN%20Wiki:%20V%C3%AD%20d%E1%BB%A5%20-%20Mark%20down">support@beckhoff.com.vn</a>.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Trở lại mục lục
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Chân trang">
+        
+          
+          <a href="../../About/roadmap/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Lộ trình tài liệu (Roadmap)">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Trước
+              </span>
+              <div class="md-ellipsis">
+                Lộ trình tài liệu (Roadmap)
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../IPC%20OS/" class="md-footer__link md-footer__link--next" aria-label="Sau: Hệ điều hành trên IPC Beckhoff (IPC OS)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Sau
+              </span>
+              <div class="md-ellipsis">
+                Hệ điều hành trên IPC Beckhoff (IPC OS)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Beckhoff Automation Vietnam — <a href="https://ba-vn.github.io/wiki/About/terms-of-use/">Điều khoản sử dụng</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://www.beckhoff.com/vi-vn/" target="_blank" rel="noopener" title="Beckhoff Automation Việt Nam" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M351.9 280H161c2.9 64.5 17.2 123.9 37.5 167.4 11.4 24.5 23.7 41.8 35.1 52.4 11.2 10.5 18.9 12.2 22.9 12.2s11.7-1.7 22.9-12.2c11.4-10.6 23.7-28 35.1-52.4 20.3-43.5 34.6-102.9 37.5-167.4zm-191-48h190.9c-2.8-64.5-17.1-123.9-37.4-167.4-11.4-24.4-23.7-41.8-35.1-52.4C268.1 1.7 260.4 0 256.4 0s-11.7 1.7-22.9 12.2c-11.4 10.6-23.7 28-35.1 52.4-20.3 43.5-34.6 102.9-37.5 167.4m-48 0c3.5-85.6 25.6-165.1 57.9-217.3C78.7 47.3 10.9 131.2 1.5 232zM1.5 280c9.4 100.8 77.2 184.7 169.3 217.3-32.3-52.2-54.4-131.7-57.9-217.3zm398.4 0c-3.5 85.6-25.6 165.1-57.9 217.3 92.1-32.7 159.9-116.5 169.3-217.3zm111.4-48C501.9 131.2 434.1 47.3 342 14.7c32.3 52.2 54.4 131.7 57.9 217.3z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://infosys.beckhoff.com/" target="_blank" rel="noopener" title="Beckhoff Information System (Infosys)" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M384 512H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h304c26.5 0 48 21.5 48 48v288c0 20.9-13.4 38.7-32 45.3V448c17.7 0 32 14.3 32 32s-14.3 32-32 32zM96 384c-17.7 0-32 14.3-32 32s14.3 32 32 32h256v-64zm32-232c0 13.3 10.7 24 24 24h176c13.3 0 24-10.7 24-24s-10.7-24-24-24H152c-13.3 0-24 10.7-24 24m24 72c-13.3 0-24 10.7-24 24s10.7 24 24 24h176c13.3 0 24-10.7 24-24s-10.7-24-24-24z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:support@beckhoff.com.vn" target="_blank" rel="noopener" title="Email hỗ trợ kỹ thuật" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l208 156a48 48 0 0 0 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 196v188c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V196L313.6 344.8c-34.1 25.6-81.1 25.6-115.2 0z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="tel:+842873002439" target="_blank" rel="noopener" title="Số điện thoại liên hệ (+84 28 7300-2439)" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M160.2 25c-7.9-18.9-28.5-28.9-48.1-23.6l-5.5 1.5C42 20.5-13.2 83.1 2.9 159.3 40 334.3 177.7 472 352.7 509.1 429 525.3 491.5 470 509.1 405.4l1.5-5.5c5.4-19.7-4.7-40.3-23.5-48.1l-97.3-40.5c-16.5-6.9-35.6-2.1-47 11.8l-38.6 47.2c-70.3-34.9-126.9-93.3-159.4-165l44.2-36c13.9-11.3 18.6-30.4 11.8-47z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://zalo.me/3774506956188675139" target="_blank" rel="noopener" title="Beckhoff Automation Việt Nam" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.49 10.272v-.45h1.347v6.322h-.77a.576.576 0 0 1-.577-.573v.001a3.27 3.27 0 0 1-1.938.632 3.284 3.284 0 0 1-3.284-3.282 3.284 3.284 0 0 1 3.284-3.282 3.27 3.27 0 0 1 1.937.632zM6.919 7.79v.205c0 .382-.051.694-.3 1.06l-.03.034a8 8 0 0 0-.242.285L2.024 14.8h4.895v.768a.576.576 0 0 1-.577.576H0v-.362c0-.443.11-.641.25-.847L4.858 9.23H.192V7.79zm8.551 8.354a.48.48 0 0 1-.48-.48V7.79h1.441v8.354zM20.693 9.6a3.306 3.306 0 1 1 .002 6.612 3.306 3.306 0 0 1-.002-6.612m-10.14 5.253a1.932 1.932 0 1 0 0-3.863 1.932 1.932 0 0 0 0 3.863m10.14-.003a1.945 1.945 0 1 0 0-3.89 1.945 1.945 0 0 0 0 3.89"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/BA-VN/wiki/issues" target="_blank" rel="noopener" title="Góp ý &amp; Báo lỗi (GitHub Issues)" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs.sticky", "navigation.tabs", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.path", "navigation.indexes", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.code.select", "content.tabs.link", "content.tooltips", "content.footnote.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
